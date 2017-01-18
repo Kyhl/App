@@ -1,20 +1,23 @@
 var canvas;
 var ctx;
-var xgl;
-var ygl;
+//var xgl;
+//var ygl;
+//var lastPt=null;
 
 
-function opdaterCanvas(){
-	var c = document.getElementById("mycanvas");
-	var ctx = c.getContext("2d");
+function opdaterCanvas(e){
+	//e.preventDefault();
 	var x=event.touches[0].pageX;
 		var y = event.touches[0].pageY;
+	//if(lastPt!=null){
 	//ctx.beginPath();
-	//ctx.moveTo(x,y);
 	ctx.lineTo(x,y);
+	//ctx.moveTo(x,y);
+	//ctx.lineTo(e.touches[0].pageX, e.touches[0].pageY);
 	ctx.stroke();
 	//ctx.closePath();
 }
+
 function init(){
 	var touchzone = document.getElementById("mycanvas");
 	touchzone.addEventListener("touchstart",opdaterCanvas,false);
@@ -30,4 +33,5 @@ function init(){
 
 function end(e){
 	e.preventDefault();
+	//lastPt=null
 }
